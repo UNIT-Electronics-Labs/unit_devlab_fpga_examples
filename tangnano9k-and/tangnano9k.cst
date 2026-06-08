@@ -1,0 +1,8 @@
+IO_LOC "gpio3_n" 3;
+IO_PORT "gpio3_n" IO_TYPE=LVCMOS18 PULL_MODE=UP;
+
+IO_LOC "gpio4_n" 4;
+IO_PORT "gpio4_n" IO_TYPE=LVCMOS18 PULL_MODE=UP;
+
+IO_LOC "led_n" 16;
+IO_PORT "led_n" IO_TYPE=LVCMOS33;

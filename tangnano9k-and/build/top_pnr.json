@@ -1,0 +1,262 @@
+{
+  "creator": "Next Generation Place and Route (Version nextpnr-0.10-77-g32324500)",
+  "modules": {
+    "top": {
+      "settings": {
+        "route": "00000000000000000000000000000001",
+        "router/tmg_ripup": "0 ",
+        "router1/useEstimate": "1 ",
+        "router1/fullCleanupReroute": "1 ",
+        "router1/cleanupReroute": "1 ",
+        "router1/maxIterCnt": "200",
+        "place": "00000000000000000000000000000001",
+        "placer1/startTemp": "1.000000",
+        "placer1/minBelsForGridPick": "64",
+        "placer1/netShareWeight": "0.000000",
+        "placer1/constraintWeight": "10.000000",
+        "placerHeap/cellPlacementTimeout": "8",
+        "placerHeap/noCtrlSet": "0 ",
+        "placerHeap/netShareWeight": "0.000000",
+        "placerHeap/parallelRefine": "0 ",
+        "pack": "00000000000000000000000000000001",
+        "synth": "00000000000000000000000000000001",
+        "placerHeap/timingWeight": "10 ",
+        "placerHeap/criticalityExponent": "2",
+        "placerHeap/beta": "0.900000",
+        "placerHeap/alpha": "0.100000",
+        "seed": "0011000101000001010110010010011001010011010110001001011110010011",
+        "arch.type": " ",
+        "arch.name": "ARCHNAME",
+        "router": "default",
+        "placer": "heap",
+        "auto_freq": "00000000000000000000000000000000",
+        "timing_driven": "00000000000000000000000000000001",
+        "target_freq": "12000000.000000",
+        "cst.filename": "tangnano9k.cst",
+        "packer.partno": "GW1NR-LV9QN88PC6/I5",
+        "packer.chipdb": "GW1N-9C",
+        "packer.arch": "himbaechel/gowin"
+      },
+      "attributes": {
+        "top": "00000000000000000000000000000001"
+      },
+      "ports": {
+        "led_n": {
+          "direction": "output",
+          "bits": [ 7708 ]
+        },
+        "gpio4_n": {
+          "direction": "input",
+          "bits": [ 7707 ]
+        },
+        "gpio3_n": {
+          "direction": "input",
+          "bits": [ 7706 ]
+        }
+      },
+      "cells": {
+        "GSR": {
+          "hide_name": 0,
+          "type": "GSR",
+          "parameters": {
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000010",
+            "NEXTPNR_BEL": "X0Y0/GSR"
+          },
+          "port_directions": {
+            "GSRI": "input"
+          },
+          "connections": {
+            "GSRI": [ 7731 ]
+          }
+        },
+        "$PACKER_VCC_DRV": {
+          "hide_name": 1,
+          "type": "GOWIN_VCC",
+          "parameters": {
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000010",
+            "NEXTPNR_BEL": "X0Y0/VCC"
+          },
+          "port_directions": {
+            "V": "output"
+          },
+          "connections": {
+            "V": [ 7731 ]
+          }
+        },
+        "$PACKER_GND_DRV": {
+          "hide_name": 1,
+          "type": "GOWIN_GND",
+          "parameters": {
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000010",
+            "NEXTPNR_BEL": "X0Y0/GND"
+          },
+          "port_directions": {
+            "G": "output"
+          },
+          "connections": {
+            "G": [ 7732 ]
+          }
+        },
+        "led_n_OBUF_O_I_LUT2_F": {
+          "hide_name": 0,
+          "type": "LUT2",
+          "parameters": {
+            "INIT": "1110"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X1Y4/LUT7",
+            "src": "/home/mr/oss-cad-suite/lib/../share/yosys/gowin/cells_map.v:139.23-140.26",
+            "module_not_derived": "00000000000000000000000000000001"
+          },
+          "port_directions": {
+            "I1": "input",
+            "I0": "input",
+            "F": "output"
+          },
+          "connections": {
+            "I1": [ 7710 ],
+            "I0": [ 7713 ],
+            "F": [ 7715 ]
+          }
+        },
+        "led_n_OBUF_O": {
+          "hide_name": 0,
+          "type": "OBUF",
+          "parameters": {
+            "NET_I": "NET",
+            "NET_O": "NET"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000101",
+            "NEXTPNR_BEL": "X0Y25/IOBB",
+            "&IO_TYPE=LVCMOS33": "00000000000000000000000000000001",
+            "keep": "00000000000000000000000000000001"
+          },
+          "port_directions": {
+            "O": "output",
+            "I": "input"
+          },
+          "connections": {
+            "O": [ 7708 ],
+            "I": [ 7715 ]
+          }
+        },
+        "gpio4_n_IBUF_I": {
+          "hide_name": 0,
+          "type": "IBUF",
+          "parameters": {
+            "NET_I": "NET",
+            "NET_O": "NET"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000101",
+            "NEXTPNR_BEL": "X0Y4/IOBA",
+            "&IO_TYPE=LVCMOS18": "00000000000000000000000000000001",
+            "&PULL_MODE=UP": "00000000000000000000000000000001",
+            "keep": "00000000000000000000000000000001"
+          },
+          "port_directions": {
+            "O": "output",
+            "I": "input"
+          },
+          "connections": {
+            "O": [ 7713 ],
+            "I": [ 7707 ]
+          }
+        },
+        "gpio3_n_IBUF_I": {
+          "hide_name": 0,
+          "type": "IBUF",
+          "parameters": {
+            "NET_I": "NET",
+            "NET_O": "NET"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000101",
+            "NEXTPNR_BEL": "X1Y0/IOBA",
+            "&IO_TYPE=LVCMOS18": "00000000000000000000000000000001",
+            "&PULL_MODE=UP": "00000000000000000000000000000001",
+            "keep": "00000000000000000000000000000001"
+          },
+          "port_directions": {
+            "O": "output",
+            "I": "input"
+          },
+          "connections": {
+            "O": [ 7710 ],
+            "I": [ 7706 ]
+          }
+        }
+      },
+      "netnames": {
+        "$PACKER_GND": {
+          "hide_name": 1,
+          "bits": [ 7732 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "$PACKER_VCC": {
+          "hide_name": 1,
+          "bits": [ 7731 ] ,
+          "attributes": {
+            "ROUTING": "X0Y0/C4;X0Y0/C4/W261;1;X1Y0/W260;X1Y0/W260/VCC;1;X1Y0/VCC;;1"
+          }
+        },
+        "led_n": {
+          "hide_name": 0,
+          "bits": [ 7708 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "led_n_OBUF_O_I": {
+          "hide_name": 0,
+          "bits": [ 7715 ] ,
+          "attributes": {
+            "ROUTING": "X1Y4/F7;;1;X1Y4/S820;X1Y4/S820/F7;1;X1Y12/S830;X1Y12/S830/S828;1;X1Y20/S800;X1Y20/S800/S838;1;X1Y24/W200;X1Y24/W200/S804;1;X0Y24/S200;X0Y24/S200/W201;1;X0Y25/D1;X0Y25/D1/S201;1"
+          }
+        },
+        "gpio3_n_IBUF_I_O[0]": {
+          "hide_name": 0,
+          "bits": [ 7713 ] ,
+          "attributes": {
+            "ROUTING": "X0Y4/F6;;1;X0Y4/EW10;X0Y4/EW10/F6;1;X1Y4/A7;X1Y4/A7/E111;1",
+            "src": "/home/mr/oss-cad-suite/lib/../share/yosys/gowin/cells_map.v:130.20-130.21",
+            "force_downto": "00000000000000000000000000000001"
+          }
+        },
+        "gpio4_n": {
+          "hide_name": 0,
+          "bits": [ 7707 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "gpio3_n_IBUF_I_O[1]": {
+          "hide_name": 0,
+          "bits": [ 7710 ] ,
+          "attributes": {
+            "ROUTING": "X1Y0/F6;;1;X1Y0/S260;X1Y0/S260/F6;1;X1Y2/S260;X1Y2/S260/S262;1;X1Y4/X07;X1Y4/X07/S262;1;X1Y4/B7;X1Y4/B7/X07;1",
+            "src": "/home/mr/oss-cad-suite/lib/../share/yosys/gowin/cells_map.v:130.20-130.21",
+            "force_downto": "00000000000000000000000000000001"
+          }
+        },
+        "gpio3_n": {
+          "hide_name": 0,
+          "bits": [ 7706 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        }
+      }
+    }
+  }
+}
