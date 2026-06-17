@@ -61,6 +61,11 @@ module svo_hdmi(
 	wire [0:0] pong_tuser;
 	wire [3:0] auto_btn;
 
+	wire clock_tvalid;
+	wire clock_tready;
+	wire [SVO_BITS_PER_PIXEL-1:0] clock_tdata;
+	wire [0:0] clock_tuser;
+
 	wire video_enc_tvalid, video_enc_tready;
 	wire [SVO_BITS_PER_PIXEL-1:0] video_enc_tdata;
 	wire [3:0] video_enc_tuser;
@@ -111,14 +116,30 @@ module svo_hdmi(
 		.out_axis_tuser(pong_tuser)
 	);
 
-	svo_enc #( `SVO_PASS_PARAMS ) svo_enc (
+	svo_clock #( `SVO_PASS_PARAMS ) svo_clock (
 		.clk(clk_pixel),
 		.resetn(clk_pixel_resetn),
+		.enable(1'b1),
 
 		.in_axis_tvalid(pong_tvalid),
 		.in_axis_tready(pong_tready),
 		.in_axis_tdata(pong_tdata),
 		.in_axis_tuser(pong_tuser),
+
+		.out_axis_tvalid(clock_tvalid),
+		.out_axis_tready(clock_tready),
+		.out_axis_tdata(clock_tdata),
+		.out_axis_tuser(clock_tuser)
+	);
+
+	svo_enc #( `SVO_PASS_PARAMS ) svo_enc (
+		.clk(clk_pixel),
+		.resetn(clk_pixel_resetn),
+
+		.in_axis_tvalid(clock_tvalid),
+		.in_axis_tready(clock_tready),
+		.in_axis_tdata(clock_tdata),
+		.in_axis_tuser(clock_tuser),
 
 		.out_axis_tvalid(video_enc_tvalid),
 		.out_axis_tready(video_enc_tready),

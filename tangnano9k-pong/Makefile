@@ -9,6 +9,7 @@ VERILOG_SOURCES= \
 	src/hdmi/svo_enc.v \
 	src/hdmi/svo_openldi.v \
 	src/hdmi/svo_pong.v \
+	src/hdmi/svo_clock.v \
 	src/hdmi/svo_tcard.v \
 	src/hdmi/svo_term.v \
 	src/hdmi/svo_tmds.v \
