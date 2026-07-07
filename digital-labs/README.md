@@ -1,17 +1,17 @@
 # Digital Labs
 
-Practicas separadas en Verilog para sistemas digitales.
+Practicas separadas para sistemas digitales con la misma estructura DevLab
+que los ejemplos basicos del repositorio.
 
-Cada practica conserva la misma estructura plana que los ejemplos simples:
+Cada practica usa:
 
-- `top.v`
-- `top.vhd`
-- `Makefile`
-- `README.md`
-- `pins.cst`
-- `digital_labs.v`
-
-`top.vhd` es la version VHDL autocontenida. `top.v` y `digital_labs.v` son la version Verilog local de cada practica.
+- `devlab.toml`: build Verilog por defecto.
+- `devlab-vhdl.toml`: build VHDL explicito.
+- `src/top.v`: top-level Verilog.
+- `src/top.vhd`: version VHDL autocontenida.
+- `src/digital_labs.v`: modulos Verilog de apoyo.
+- `pins.cst`: restricciones de pines Gowin CST.
+- `Makefile`: compatibilidad para Linux.
 
 ## Practicas
 
@@ -35,19 +35,42 @@ Secuenciales:
 - `13_maquina_moore`
 - `14_maquina_mealy`
 
-## Compilar una practica
+## Requisitos
+
+- Python 3.11+
+- devlab-fpga instalado: `pip install devlab-fpga`
+- OSS CAD Suite instalado por devlab con `devlab install`
+
+## Compilar una practica con DevLab
+
+Desde la carpeta de la practica:
+
+```bash
+cd digital-labs/01_sumador_n_bits
+devlab build
+devlab flash
+```
+
+`devlab.toml` compila Verilog por defecto para mantener el flujo portable
+entre Linux, Windows y macOS. Para probar VHDL explicitamente:
+
+```bash
+devlab build -c devlab-vhdl.toml
+```
+
+## Compatibilidad Make/Linux
 
 ```bash
 make -C digital-labs/01_sumador_n_bits
 ```
 
-Por defecto compila VHDL. Para compilar Verilog:
+Por defecto el `Makefile` compila VHDL. Para compilar Verilog:
 
 ```bash
 make -C digital-labs/01_sumador_n_bits HDL=verilog
 ```
 
-## Compilar todas
+## Compilar todas con Make/Linux
 
 ```bash
 make digital-labs

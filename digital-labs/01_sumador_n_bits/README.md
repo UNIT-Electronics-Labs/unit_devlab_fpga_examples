@@ -1,6 +1,21 @@
 # Practica 01: Sumador binario en paralelo de N bits
 
-Compilar:
+Compilar con DevLab:
+
+```bash
+cd digital-labs/01_sumador_n_bits
+devlab build
+devlab flash
+```
+
+Para probar VHDL explicitamente:
+
+```bash
+cd digital-labs/01_sumador_n_bits
+devlab build -c devlab-vhdl.toml
+```
+
+El `Makefile` queda como compatibilidad para Linux:
 
 ```bash
 make -C digital-labs/01_sumador_n_bits
