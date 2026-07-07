@@ -1,0 +1,18 @@
+[windows]
+osscad = "https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2026-07-06/oss-cad-suite-windows-x64-20260706.exe"
+ghdl = "https://github.com/ghdl/ghdl/releases/download/v6.0.0/ghdl-6.0.0-mcode-windows.zip"
+vhdl_status = "external-ghdl-required"
+default_hdl = "verilog"
+
+[linux]
+osscad = "https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2026-07-06/oss-cad-suite-linux-x64-20260706.tgz"
+ghdl = "embedded"
+vhdl_status = "supported-by-oss-cad-suite"
+default_hdl = "verilog"
+
+[macos]
+osscad_x64 = "https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2026-07-06/oss-cad-suite-darwin-x64-20260706.tgz"
+osscad_arm64 = "https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2026-07-06/oss-cad-suite-darwin-arm64-20260706.tgz"
+ghdl = "embedded"
+vhdl_status = "supported-by-oss-cad-suite"
+default_hdl = "verilog"
