@@ -2,3 +2,6 @@ TangNano-9K-example/
 **/build/
 venv/
 *.whl
+node_modules/
+docs/.vitepress/cache/
+docs/.vitepress/dist/
