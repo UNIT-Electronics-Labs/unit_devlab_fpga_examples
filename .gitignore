@@ -1,2 +1,4 @@
 TangNano-9K-example/
 **/build/
+venv/
+*.whl
