@@ -1862,7 +1862,7 @@ void main()
     12a4:	00e7a023          	sw	a4,0(a5)
     print(" |_|   |_|\\___\\___/____/ \\___/ \\____|\n");
     print("\n");
-    print("        On Lichee Tang Nano-9K\n");
+    print("        On PicoTiny\n");
     print("\n");
 
     for ( i = 0 ; i < 10000; i++);

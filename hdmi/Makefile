@@ -16,4 +16,4 @@ VERILOG_SOURCES= \
 	src/svo_hdmi.v \
 	src/top.v
 
-include ../mk/tangnano9k.mk
+include ../mk/common.mk

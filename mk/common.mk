@@ -17,7 +17,7 @@ NEXTPNR_SDC=$(if $(strip $(SDC)),--sdc $(SDC),)
 
 DEVICE?=GW1NR-LV9QN88PC6/I5
 FAMILY?=GW1N-9C
-CST?=tangnano9k.cst
+CST?=pins.cst
 
 ifeq ($(HDL),vhdl)
 SYNTH=$(RUN) yosys -m ghdl -p "ghdl $(VHDL_SOURCE) -e $(TOP); synth_gowin -top $(TOP) -json $(SYNTH_JSON)"

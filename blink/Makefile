@@ -1,5 +1,5 @@
 TOP=top
 HDL?=vhdl
-CST=tangnano9k.cst
+CST=pins.cst
 
-include ../mk/tangnano9k.mk
+include ../mk/common.mk

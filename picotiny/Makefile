@@ -38,7 +38,7 @@ export PYTHON_NAME
 export RISCV_NAME
 export RISCV_PATH
 
-include ../mk/tangnano9k.mk
+include ../mk/common.mk
 
 .PHONY: firmware brom user-fw program clean-firmware clean-all
 

@@ -1,24 +1,16 @@
 EXAMPLES := \
-	tangnano9k-blink \
-	tangnano9k-and \
-	tangnano9k-or \
-	tangnano9k-not \
-	tangnano9k-hdmi \
-	tangnano9k-pong \
-	tangnano9k-picotiny
+	blink \
+	and \
+	or \
+	not \
+	hdmi \
+	pong \
+	picotiny \
+	digital-labs
 
-.PHONY: all hdmi pong picotiny $(EXAMPLES) clean
+.PHONY: all $(EXAMPLES) clean
 
 all: $(EXAMPLES)
-
-hdmi:
-	$(MAKE) -C tangnano9k-hdmi
-
-pong:
-	$(MAKE) -C tangnano9k-pong
-
-picotiny:
-	$(MAKE) -C tangnano9k-picotiny
 
 $(EXAMPLES):
 	$(MAKE) -C $@

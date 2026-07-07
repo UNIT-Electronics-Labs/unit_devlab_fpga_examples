@@ -20,7 +20,7 @@ Los archivos compilados quedan en `build/`:
 - `build/top_pnr.json`
 - `build/top.fs`
 
-Para programar la Tang Nano 9K:
+Para programar el bitstream:
 
 ```sh
 make flash

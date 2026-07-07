@@ -1,6 +1,6 @@
-# Tang Nano 9K PicoTiny
+# PicoTiny
 
-Minimal root-level PicoTiny example for the Tang Nano 9K.
+Minimal root-level PicoTiny example.
 
 This example keeps the pieces needed to build and run the PicoRV32 SoC:
 
@@ -14,25 +14,25 @@ This example keeps the pieces needed to build and run the PicoRV32 SoC:
 ## Build FPGA Bitstream
 
 ```bash
-make -C tangnano9k-picotiny
+make -C picotiny
 ```
 
 Output:
 
 ```text
-tangnano9k-picotiny/build/picotiny.fs
+picotiny/build/picotiny.fs
 ```
 
 Load to SRAM:
 
 ```bash
-openFPGALoader -b tangnano9k tangnano9k-picotiny/build/picotiny.fs
+openFPGALoader picotiny/build/picotiny.fs
 ```
 
 ## Build Firmware
 
 ```bash
-make -C tangnano9k-picotiny firmware
+make -C picotiny firmware
 ```
 
 The Makefile defaults to the Linux toolchain installed on this machine:
@@ -45,7 +45,7 @@ RISCV_NAME=riscv64-unknown-elf
 Override them if needed:
 
 ```bash
-make -C tangnano9k-picotiny firmware RISCV_PATH=/path/to/toolchain RISCV_NAME=riscv-none-elf
+make -C picotiny firmware RISCV_PATH=/path/to/toolchain RISCV_NAME=riscv-none-elf
 ```
 
 ## Program User Firmware
@@ -53,10 +53,10 @@ make -C tangnano9k-picotiny firmware RISCV_PATH=/path/to/toolchain RISCV_NAME=ri
 After loading the FPGA bitstream, program the user firmware through the PicoTiny UART ISP:
 
 ```bash
-make -C tangnano9k-picotiny program COMx=/dev/ttyUSB1
+make -C picotiny program COMx=/dev/ttyUSB1
 ```
 
-When prompted, press and release `S1` reset on the Tang Nano 9K.
+When prompted, press and release `S1` reset.
 
 ## Useful Files
 

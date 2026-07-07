@@ -297,7 +297,7 @@ void main()
     print(" |  __/| | (_| (_) |__) | (_) | |___\n");
     print(" |_|   |_|\\___\\___/____/ \\___/ \\____|\n");
     print("\n");
-    print("        On Lichee Tang Nano-9K\n");
+    print("        On PicoTiny\n");
     print("\n");
 
     for ( i = 0 ; i < 10000; i++);

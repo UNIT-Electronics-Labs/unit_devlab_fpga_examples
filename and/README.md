@@ -1,4 +1,4 @@
-# Tang Nano 9K AND
+# AND
 
 Ejemplo de compuerta AND usando las entradas GPIO 3 y GPIO 4 con pull-up.
 
@@ -15,7 +15,7 @@ make flash
 
 Los archivos generados quedan en `build/`, incluyendo `build/top.fs`.
 
-Por defecto el entorno comun `../mk/tangnano9k.mk` busca oss-cad-suite en `~/oss-cad-suite`. Si esta en otra ruta:
+Por defecto el entorno comun `../mk/common.mk` busca oss-cad-suite en `~/oss-cad-suite`. Si esta en otra ruta:
 
 ```sh
 make OSS_CAD_SUITE=/ruta/a/oss-cad-suite
