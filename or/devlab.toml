@@ -1,0 +1,15 @@
+[fpga]
+family = "GW1N-9C"
+device = "GW1NR-LV9QN88PC6/I5"
+cst = "pins.cst"
+
+[build]
+top = "top"
+sources = ["src/top.v"]
+constraints = "pins.cst"
+build_dir = "build"
+
+[flash]
+board = "tangnano9k"
+mode = "sram"
+verify = false

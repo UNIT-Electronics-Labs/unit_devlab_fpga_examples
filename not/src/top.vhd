@@ -7,18 +7,12 @@ entity top is
         gpio4_n : in std_logic;
         led_n : out std_logic
     );
-end entity;
+end entity top;
 
 architecture rtl of top is
-
-signal a : std_logic;
-signal b : std_logic;
-
+    signal a : std_logic;
 begin
+    a <= not gpio3_n;
 
-a <= not gpio3_n;
-b <= not gpio4_n;
-
-led_n <= not (a and b);
-
-end architecture;
+    led_n <= not (not a);
+end architecture rtl;
