@@ -35,3 +35,28 @@ features:
 - [Esquemático Tang Nano 9K](./guide/esquematico.md)
 - [Ejemplos básicos](./examples/index.md)
 - [Digital Labs](./examples/digital-labs/index.md)
+
+## Cursos
+
+<div class="course-grid">
+  <section class="course-card course-basic">
+    <h3>Inicio FPGA</h3>
+    <p>Primeros ejemplos para validar reloj, botones, LEDs y flujo DevLab.</p>
+    <a href="./examples/">Abrir ejemplos básicos</a>
+  </section>
+  <section class="course-card course-digital">
+    <h3>Digital Labs</h3>
+    <p>Prácticas combinacionales, contadores y máquinas de estado en Verilog y VHDL.</p>
+    <a href="./examples/digital-labs/">Abrir prácticas</a>
+  </section>
+  <section class="course-card course-tooling">
+    <h3>Toolchain</h3>
+    <p>Instalación, compilación, carga en placa y solución de problemas por sistema operativo.</p>
+    <a href="./guide/devlab.md">Abrir guía DevLab</a>
+  </section>
+  <section class="course-card course-reference">
+    <h3>Referencia de Hardware</h3>
+    <p>CST, pinout, esquemático y criterios para adaptar la tarjeta objetivo.</p>
+    <a href="./guide/cst.md">Abrir pines CST</a>
+  </section>
+</div>
