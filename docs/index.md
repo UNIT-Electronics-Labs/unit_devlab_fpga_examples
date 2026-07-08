@@ -20,9 +20,21 @@ features:
     details: Cada práctica conserva Verilog como flujo por defecto y VHDL como variante explícita.
   - title: Target configurable
     details: La referencia actual usa un GW1NR-LV9QN88PC6/I5, pero la tarjeta se define por los archivos CST y la sección flash.
-  - title: Soporte Windows
-    details: Documentación específica para configurar DevLab en Windows, incluyendo exclusiones de Windows Defender.
+  - title: Soporte probado
+    details: Flujo documentado y probado en Windows 11 y Ubuntu 24.04.
 ---
+
+## Soporte Disponible
+
+Este taller está probado con:
+
+- Windows 11 con Python, Zadig, DevLab y exclusiones de Windows Defender.
+- Ubuntu 24.04 con Python, DevLab y reglas `udev` para programar la FPGA.
+
+Consulta las guías específicas para preparar cada sistema:
+
+- [Guía para Windows](./guide/windows.md)
+- [Guía para Linux / Ubuntu](./guide/linux.md)
 
 ## Mapa Rápido
 
