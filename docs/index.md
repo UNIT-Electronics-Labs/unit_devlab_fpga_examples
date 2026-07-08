@@ -36,6 +36,25 @@ Consulta las guías específicas para preparar cada sistema:
 - [Guía para Windows](./guide/windows.md)
 - [Guía para Linux / Ubuntu](./guide/linux.md)
 
+## Repositorio y Ejemplos
+
+Los archivos del taller están en el repositorio:
+
+[UNIT-Electronics-Labs/unit_devlab_fpga_examples](https://github.com/UNIT-Electronics-Labs/unit_devlab_fpga_examples)
+
+Ubicación principal de los ejemplos:
+
+```text
+unit_devlab_fpga_examples/
+|-- blink/          Ejemplo básico con reloj y LED
+|-- and/            Compuerta AND
+|-- or/             Compuerta OR
+|-- not/            Compuerta NOT
+|-- digital-labs/   Prácticas del curso de sistemas digitales
+|-- docs/           Documentación publicada del taller
+`-- mk/             Archivos auxiliares para Make
+```
+
 ## Mapa Rápido
 
 - [Guía de DevLab](./guide/devlab.md)

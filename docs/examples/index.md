@@ -2,6 +2,24 @@
 
 Este repositorio agrupa ejemplos basicos y practicas de sistemas digitales para FPGA Gowin. La referencia actual usa el dispositivo `GW1NR-LV9QN88PC6/I5`, pero la tarjeta target se puede cambiar ajustando `pins.cst` y la seccion `[flash]` de DevLab.
 
+Repositorio fuente:
+[UNIT-Electronics-Labs/unit_devlab_fpga_examples](https://github.com/UNIT-Electronics-Labs/unit_devlab_fpga_examples)
+
+Los ejemplos básicos viven en carpetas de primer nivel (`blink/`, `and/`, `or/`, `not/`). Las prácticas completas del curso están en `digital-labs/`.
+
+```text
+unit_devlab_fpga_examples/
+|-- blink/
+|-- and/
+|-- or/
+|-- not/
+`-- digital-labs/
+    |-- 01_sumador_n_bits/
+    |-- 02_restador_n_bits/
+    |-- ...
+    `-- 14_maquina_mealy/
+```
+
 ## Básicos
 
 - [Blink](./basic/blink.md): contador con reloj y LED.
