@@ -1,8 +1,17 @@
 :root {
-  --course-basic: #0f766e;
-  --course-digital: #b45309;
-  --course-tooling: #2563eb;
-  --course-reference: #7c3aed;
+  --vp-c-brand-1: #047857;
+  --vp-c-brand-2: #059669;
+  --vp-c-brand-3: #10b981;
+  --vp-c-brand-soft: rgba(16, 185, 129, 0.16);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #064e3b 0%, #059669 52%, #84cc16 100%);
+  --vp-button-brand-bg: #047857;
+  --vp-button-brand-hover-bg: #059669;
+  --vp-button-brand-active-bg: #065f46;
+  --course-basic: #047857;
+  --course-digital: #15803d;
+  --course-tooling: #0f766e;
+  --course-reference: #4d7c0f;
 }
 
 .vp-doc .course-grid {
