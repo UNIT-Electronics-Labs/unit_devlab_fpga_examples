@@ -19,9 +19,11 @@ export default defineConfig({
           { text: 'DevLab', link: '/guide/devlab' },
           { text: 'Windows', link: '/guide/windows' },
           { text: 'Linux', link: '/guide/linux' },
+          { text: 'Ruta del curso', link: '/guide/curso' },
           { text: 'Verilog', link: '/guide/verilog' },
           { text: 'VHDL', link: '/guide/vhdl' },
-          { text: 'Archivos CST', link: '/guide/cst' }
+          { text: 'Archivos CST', link: '/guide/cst' },
+          { text: 'Esquemático', link: '/guide/esquematico' }
         ]
       },
       {

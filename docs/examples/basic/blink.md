@@ -17,6 +17,57 @@ Ejemplo minimo para comprobar reloj, sintesis, place-and-route y carga en una FP
 - `blink/src/top.vhd`: implementacion VHDL.
 - `blink/pins.cst`: pines de la placa.
 
+## Lectura del Circuito
+
+El contador incrementa en cada flanco de subida de `clk`. Un bit alto del contador cambia lento y se conecta al LED para producir parpadeo visible.
+
+![Blink](img/blink.png)
+
+## Código Fuente
+
+::: code-group
+
+```verilog [Verilog]
+module top (
+    input wire clk,
+    output reg led
+);
+    reg [23:0] counter = 0;
+
+    always @(posedge clk) begin
+        counter <= counter + 1;
+        led <= counter[23];
+    end
+endmodule
+```
+
+```vhdl [VHDL]
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity top is
+    port (
+        clk : in std_logic;
+        led : out std_logic
+    );
+end entity top;
+
+architecture rtl of top is
+    signal counter : unsigned(23 downto 0) := (others => '0');
+begin
+    process (clk)
+    begin
+        if rising_edge(clk) then
+            counter <= counter + 1;
+            led <= counter(23);
+        end if;
+    end process;
+end architecture rtl;
+```
+
+:::
+
 ## Compilar
 
 ```bash
@@ -32,7 +83,3 @@ cd blink
 devlab build -c devlab-vhdl.toml
 devlab flash
 ```
-
-## Lectura del Circuito
-
-El contador incrementa en cada flanco de subida de `clk`. Un bit alto del contador cambia lento y se conecta al LED para producir parpadeo visible.

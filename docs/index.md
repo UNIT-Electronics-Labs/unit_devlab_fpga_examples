@@ -28,17 +28,10 @@ features:
 
 - [Guía de DevLab](./guide/devlab.md)
 - [Guía para Windows](./guide/windows.md) ⭐
+- [Ruta del curso](./guide/curso.md)
 - [Introducción a Verilog](./guide/verilog.md)
 - [Introducción a VHDL](./guide/vhdl.md)
 - [Archivos CST](./guide/cst.md)
+- [Esquemático Tang Nano 9K](./guide/esquematico.md)
 - [Ejemplos básicos](./examples/index.md)
 - [Digital Labs](./examples/digital-labs/index.md)
-
-## Uso Básico
-
-```bash
-npm install
-npm run docs:dev
-```
-
-El sitio se sirve localmente con VitePress y documenta los ejemplos que viven en este repositorio.
