@@ -10,17 +10,15 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  build:
-    name: Build VitePress
+  deploy:
+    name: Build and Deploy VitePress
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,17 +33,15 @@ jobs:
           cache: npm
           cache-dependency-path: docs/package-lock.json
 
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-
       - name: Set VitePress base
         id: vitepress-base
         run: |
-          if [ -z "${{ steps.pages.outputs.base_path }}" ]; then
+          repo_name="${GITHUB_REPOSITORY#*/}"
+          owner_name="${GITHUB_REPOSITORY%/*}"
+          if [ "${repo_name}" = "${owner_name}.github.io" ]; then
             echo "base=/" >> "$GITHUB_OUTPUT"
           else
-            echo "base=${{ steps.pages.outputs.base_path }}/" >> "$GITHUB_OUTPUT"
+            echo "base=/${repo_name}/" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Install dependencies
@@ -58,19 +54,19 @@ jobs:
           BASE_PATH: ${{ steps.vitepress-base.outputs.base }}
         run: npm run build
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: docs/.vitepress/dist
+      - name: Disable Jekyll
+        run: touch docs/.vitepress/dist/.nojekyll
 
-  deploy:
-    name: Deploy GitHub Pages
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Deploy to gh-pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd docs/.vitepress/dist
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Deploy docs from ${GITHUB_SHA}"
+          git branch -M gh-pages
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push --force origin gh-pages
