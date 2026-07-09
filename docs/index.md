@@ -20,9 +20,40 @@ features:
     details: Cada práctica conserva Verilog como flujo por defecto y VHDL como variante explícita.
   - title: Target configurable
     details: La referencia actual usa un GW1NR-LV9QN88PC6/I5, pero la tarjeta se define por los archivos CST y la sección flash.
-  - title: Soporte Windows
-    details: Documentación específica para configurar DevLab en Windows, incluyendo exclusiones de Windows Defender.
+  - title: Soporte probado
+    details: Flujo documentado y probado en Windows 11 y Ubuntu 24.04.
 ---
+
+## Soporte Disponible
+
+Este taller está probado con:
+
+- Windows 11 con Python, Zadig, DevLab y exclusiones de Windows Defender.
+- Ubuntu 24.04 con Python, DevLab y reglas `udev` para programar la FPGA.
+
+Consulta las guías específicas para preparar cada sistema:
+
+- [Guía para Windows](./guide/windows.md)
+- [Guía para Linux / Ubuntu](./guide/linux.md)
+
+## Repositorio y Ejemplos
+
+Los archivos del taller están en el repositorio:
+
+[UNIT-Electronics-Labs/unit_devlab_fpga_examples](https://github.com/UNIT-Electronics-Labs/unit_devlab_fpga_examples)
+
+Ubicación principal de los ejemplos:
+
+```text
+unit_devlab_fpga_examples/
+|-- blink/          Ejemplo básico con reloj y LED
+|-- and/            Compuerta AND
+|-- or/             Compuerta OR
+|-- not/            Compuerta NOT
+|-- digital-labs/   Prácticas del curso de sistemas digitales
+|-- docs/           Documentación publicada del taller
+`-- mk/             Archivos auxiliares para Make
+```
 
 ## Mapa Rápido
 
@@ -35,3 +66,28 @@ features:
 - [Esquemático Tang Nano 9K](./guide/esquematico.md)
 - [Ejemplos básicos](./examples/index.md)
 - [Digital Labs](./examples/digital-labs/index.md)
+
+## Cursos
+
+<div class="course-grid">
+  <section class="course-card course-basic">
+    <h3>Inicio FPGA</h3>
+    <p>Primeros ejemplos para validar reloj, botones, LEDs y flujo DevLab.</p>
+    <a href="./examples/">Abrir ejemplos básicos</a>
+  </section>
+  <section class="course-card course-digital">
+    <h3>Digital Labs</h3>
+    <p>Prácticas combinacionales, contadores y máquinas de estado en Verilog y VHDL.</p>
+    <a href="./examples/digital-labs/">Abrir prácticas</a>
+  </section>
+  <section class="course-card course-tooling">
+    <h3>Toolchain</h3>
+    <p>Instalación, compilación, carga en placa y solución de problemas por sistema operativo.</p>
+    <a href="./guide/devlab.md">Abrir guía DevLab</a>
+  </section>
+  <section class="course-card course-reference">
+    <h3>Referencia de Hardware</h3>
+    <p>CST, pinout, esquemático y criterios para adaptar la tarjeta objetivo.</p>
+    <a href="./guide/cst.md">Abrir pines CST</a>
+  </section>
+</div>

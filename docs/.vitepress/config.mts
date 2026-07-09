@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+  base: process.env.BASE_PATH ?? '/',
   title: 'Gowin FPGA Labs',
   description: 'Documentación de ejemplos FPGA Gowin con DevLab, Verilog y VHDL.',
   lang: 'es-MX',
