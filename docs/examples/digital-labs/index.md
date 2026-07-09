@@ -14,14 +14,14 @@ digital-labs/<practica>/
 `-- README.md
 ```
 
-Estas paginas funcionan como el material de laboratorio de la [ruta del curso](../../guide/curso.md). Cada practica incluye objetivo, entradas y salidas, comandos de compilacion, conceptos clave, actividades y entregable sugerido.
+Estas páginas funcionan como el material de laboratorio de la [ruta del curso](../../guide/curso.md). Cada práctica incluye objetivo, entradas y salidas, comandos de compilación, conceptos clave, actividades y un entregable sugerido.
 
 ## Antes de Empezar
 
-- Verifica que `devlab doctor` no reporte errores criticos.
+- Verifica que `devlab doctor` no reporte errores críticos.
 - Revisa si tu tarjeta usa los mismos pines que `pins.cst`.
 - Recuerda que `led_n` es activo en bajo: el LED enciende con `0`.
-- En los botones con sufijo `_n`, el valor logico se invierte dentro del `top`.
+- En los botones con sufijo `_n`, el valor lógico se invierte dentro del `top`.
 
 ## Prácticas Combinacionales
 
@@ -59,9 +59,9 @@ devlab build -c devlab-vhdl.toml
 
 ## Entrega Base
 
-Para cada practica entrega una nota breve con:
+Para cada práctica entrega una nota breve con:
 
 - Tabla de verdad o tabla de estados.
-- Captura o transcripcion del comando `devlab build`.
-- Descripcion de lo observado en el LED.
+- Captura o transcripción del comando `devlab build`.
+- Descripción de lo observado en el LED.
 - Respuesta a las preguntas de cierre.

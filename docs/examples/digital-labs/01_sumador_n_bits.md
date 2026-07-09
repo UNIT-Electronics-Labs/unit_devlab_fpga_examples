@@ -36,7 +36,7 @@ devlab flash
 
 ## Restricciones de Pines
 
-El archivo `pins.cst` conecta los puertos del `top` con los pines fisicos de la tarjeta. En estas practicas se conserva el mismo mapeo base para reloj, botones y LED.
+El archivo `pins.cst` conecta los puertos del `top` con los pines físicos de la tarjeta. En estas prácticas se conserva el mismo mapeo base para reloj, botones y LED.
 
 ```text [pins.cst]
 IO_LOC "clk" 52;
@@ -109,12 +109,12 @@ end architecture;
 
 ## Teoría Mínima
 
-Un sumador binario combina `a`, `b` y `cin`. El resultado completo necesita `N + 1` bits: `N` bits para `sum` y un bit extra para `cout`. En esta practica el modulo se parametriza con `N = 4`, aunque la demostracion solo cambia el bit menos significativo con los botones.
+Un sumador binario combina `a`, `b` y `cin`. El resultado completo necesita `N + 1` bits: `N` bits para `sum` y un bit extra para `cout`. En esta práctica el módulo se parametriza con `N = 4`, aunque la demostración solo cambia el bit menos significativo con los botones.
 
 ## Procedimiento
 
 1. Compila y carga la version Verilog.
-2. Presiona cada boton por separado y observa el LED.
+2. Presiona cada botón por separado y observa el LED.
 3. Presiona ambos botones al mismo tiempo.
 4. Repite la prueba con `devlab-vhdl.toml`.
 
@@ -135,4 +135,4 @@ Un sumador binario combina `a`, `b` y `cin`. El resultado completo necesita `N +
 
 ## Entregable
 
-Tabla de verdad completa, comando de compilacion exitoso y una explicacion corta de la diferencia entre `sum[0]` y `cout`.
+Tabla de verdad completa, comando de compilación exitoso y una explicación corta de la diferencia entre `sum[0]` y `cout`.
