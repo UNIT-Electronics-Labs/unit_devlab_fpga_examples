@@ -1,6 +1,6 @@
 # Ejemplos
 
-Este repositorio agrupa ejemplos basicos y practicas de sistemas digitales para FPGA Gowin. La referencia actual usa el dispositivo `GW1NR-LV9QN88PC6/I5`, pero la tarjeta target se puede cambiar ajustando `pins.cst` y la seccion `[flash]` de DevLab.
+Este repositorio agrupa ejemplos básicos y prácticas de sistemas digitales para FPGA Gowin. La referencia actual usa el dispositivo `GW1NR-LV9QN88PC6/I5`, pero la tarjeta target se puede cambiar ajustando `pins.cst` y la seccion `[flash]` de DevLab.
 
 ## Básicos
 

@@ -3,7 +3,7 @@
 Ejemplo de compuerta AND usando dos entradas con pull-up y un LED activo en bajo.
 
 
-## Qué Aprendes
+## Qué aprenderás
 
 - Invertir entradas activas en bajo.
 - Construir lógica combinacional.

@@ -1,8 +1,8 @@
 # Blink
 
-Ejemplo minimo para comprobar reloj, sintesis, place-and-route y carga en una FPGA Gowin.
+Ejemplo mínimo para comprobar reloj, síntesis, place-and-route y carga en una FPGA Gowin.
 
-## Qué Aprendes
+## Qué aprenderás
 
 - Usar `clk` como reloj de sistema.
 - Implementar un contador.
@@ -13,8 +13,8 @@ Ejemplo minimo para comprobar reloj, sintesis, place-and-route y carga en una FP
 
 - `blink/devlab.toml`: build Verilog.
 - `blink/devlab-vhdl.toml`: build VHDL.
-- `blink/src/top.v`: implementacion Verilog.
-- `blink/src/top.vhd`: implementacion VHDL.
+- `blink/src/top.v`: implementación Verilog.
+- `blink/src/top.vhd`: implementación VHDL.
 - `blink/pins.cst`: pines de la placa.
 
 ## Lectura del Circuito

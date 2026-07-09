@@ -16,13 +16,13 @@ build_dir = "build"
 
 Hay tres niveles distintos:
 
-- HDL: define puertos logicos como `clk`, `led_n` o `key_reset_n`.
+- HDL: define puertos lógicos como `clk`, `led_n` o `key_reset_n`.
 - Chip Gowin: define familia, dispositivo y bancos de I/O, por ejemplo `GW1N-9C` y `GW1NR-LV9QN88PC6/I5`.
 - Target: define la tarjeta concreta, sus conectores, botones, LEDs, reloj y programador.
 
-El `.cst` vive entre el HDL y el target: traduce puertos logicos a pines fisicos. Por eso no conviene escribir la documentacion como si el SDK perteneciera a una sola tarjeta. La tarjeta de referencia puede cambiar; el concepto de distribucion de pines se mantiene.
+El `.cst` vive entre el HDL y el target: traduce puertos lógicos a pines físicos. Por eso no conviene escribir la documentación como si el SDK perteneciera a una sola tarjeta. La tarjeta de referencia puede cambiar; el concepto de distribución de pines se mantiene.
 
-Para la tarjeta de referencia, consulta tambien el [esquematico Tang Nano 9K](./esquematico.md). El esquematico es la fuente para confirmar conexiones fisicas, bancos de voltaje y polaridad de señales antes de cambiar un `IO_LOC` o `IO_TYPE`.
+Para la tarjeta de referencia, consulta también el [esquemático Tang Nano 9K](./esquematico.md). El esquemático es la fuente para confirmar conexiones físicas, bancos de voltaje y polaridad de señales antes de cambiar un `IO_LOC` o `IO_TYPE`.
 
 ## Relación Entre HDL y CST
 
@@ -54,7 +54,7 @@ IO_LOC "led_n" 16;
 IO_PORT "led_n" IO_TYPE=LVCMOS33;
 ```
 
-Si el nombre no coincide, el toolchain no puede asignar ese puerto a un pin fisico.
+Si el nombre no coincide, el toolchain no puede asignar ese puerto a un pin físico.
 
 ## Líneas Principales
 
@@ -365,7 +365,7 @@ Esta tabla muestra los pines más comunes para la Tang Nano 9K:
 | `btn[1]`      | 4   | LVCMOS18  | UP        | Botón S2 (activo bajo) |
 
 **Nota**: Verifica siempre el pinout de tu tarjeta específica. Estos valores son para referencia.
-Si hay duda, valida el pin contra el [esquematico de la tarjeta](./esquematico.md) antes de cargar el bitstream.
+Si hay duda, valida el pin contra el [esquemático de la tarjeta](./esquematico.md) antes de cargar el bitstream.
 
 ## Cómo Reutilizar un CST Existente
 

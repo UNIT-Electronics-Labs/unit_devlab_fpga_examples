@@ -56,7 +56,7 @@ begin
 end process;
 ```
 
-## Cómo Usar VHDL en Este Repo
+## Cómo Usar VHDL en Este Repositorio
 
 Cada práctica tiene un `src/top.vhd` autocontenido y un archivo `devlab-vhdl.toml`.
 

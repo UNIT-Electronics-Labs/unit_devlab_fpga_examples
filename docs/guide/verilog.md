@@ -1,10 +1,10 @@
 # Introducción a Verilog
 
-Verilog describe hardware. No es un lenguaje de software secuencial: un `assign`, una compuerta y varios bloques `always` representan logica que existe en paralelo dentro de la FPGA.
+Verilog describe hardware. No es un lenguaje de software secuencial: un `assign`, una compuerta y varios bloques `always` representan lógica que existe en paralelo dentro de la FPGA.
 
-## Modulo
+## Módulo
 
-Un modulo define entradas, salidas e implementacion interna.
+Un módulo define entradas, salidas e implementación interna.
 
 ```verilog
 module top (
