@@ -68,11 +68,11 @@ const featureCards = [
       </p>
 
       <div class="actions">
-        <a href="/guide/devlab" class="btn primary">
+        <a :href="withBase('/guide/devlab')" class="btn primary">
           Instalación
         </a>
 
-        <a href="/examples/" class="btn secondary">
+        <a :href="withBase('/examples/')" class="btn secondary">
           Ver ejemplos
         </a>
       </div>

@@ -16,7 +16,7 @@ defineProps({
       v-for="card in cards"
       :key="card.title"
       class="feature-card"
-      :href="card.link ? withBase(card.link) : undefined"
+      :href="withBase(card.link)"
     >
       <h2>{{ card.title }}</h2>
       <p>{{ card.description }}</p>
