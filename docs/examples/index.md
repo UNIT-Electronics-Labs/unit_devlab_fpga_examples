@@ -7,6 +7,12 @@ Repositorio fuente:
 
 Los ejemplos básicos viven en carpetas de primer nivel (`blink/`, `and/`, `or/`, `not/`). Las prácticas completas del curso están en `digital-labs/`.
 
+## Pinout de la Tarjeta
+
+Usa esta referencia para ubicar el reloj, botones, LEDs y conectores antes de ajustar cualquier archivo `pins.cst`.
+
+![Pinout Tang Nano 9K](../guide/img/tang-nano-9k-pinout.png)
+
 ```text
 unit_devlab_fpga_examples/
 |-- blink/

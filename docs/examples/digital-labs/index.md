@@ -16,6 +16,12 @@ digital-labs/<practica>/
 
 Estas páginas funcionan como el material de laboratorio de la [ruta del curso](../../guide/curso.md). Cada práctica incluye objetivo, entradas y salidas, comandos de compilación, conceptos clave, actividades y un entregable sugerido.
 
+## Pinout de la Tarjeta
+
+Usa esta referencia para revisar la ubicación física de `clk`, botones, LEDs y conectores antes de modificar `pins.cst`.
+
+![Pinout Tang Nano 9K](../../guide/img/tang-nano-9k-pinout.png)
+
 ## Antes de Empezar
 
 - Verifica que `devlab doctor` no reporte errores críticos.
