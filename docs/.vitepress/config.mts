@@ -17,6 +17,8 @@ export default defineConfig({
       {
         text: 'Primeros Pasos',
         items: [
+          { text: 'Entorno', link: '/guide/entorno' },
+          { text: 'Tang Nano 9K', link: '/guide/tang-nano-9k' },
           { text: 'DevLab', link: '/guide/devlab' },
           { text: 'Windows', link: '/guide/windows' },
           { text: 'Linux', link: '/guide/linux' },
