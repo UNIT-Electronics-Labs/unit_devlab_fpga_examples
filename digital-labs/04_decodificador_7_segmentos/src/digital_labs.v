@@ -80,6 +80,124 @@ module seven_segment_decoder #(
     assign seg = ACTIVE_LOW ? ~raw : raw;
 endmodule
 
+module two_digit_7seg_counter #(
+    parameter integer CLK_HZ = 27000000,
+    parameter integer COUNT_HZ = 1,
+    parameter integer REFRESH_HZ = 1000,
+    parameter integer TEST_HZ = 1,
+    parameter ACTIVE_LOW_SEG = 0,
+    parameter ACTIVE_LOW_DIGIT = 0
+) (
+    input  wire       clk,
+    input  wire       reset,
+    input  wire       enable,
+    input  wire       test_mode,
+    output wire [7:0] seg,
+    output wire [1:0] digit_en
+);
+    localparam integer REFRESH_MAX = CLK_HZ / (REFRESH_HZ * 2);
+    localparam integer TEST_MAX = CLK_HZ / TEST_HZ;
+    localparam integer BUTTON_DEBOUNCE_MAX = CLK_HZ / 100;
+
+    reg [31:0] refresh_div = 0;
+    reg [31:0] test_div = 0;
+    reg [31:0] debounce_div = 0;
+    reg [3:0] ones = 0;
+    reg [3:0] tens = 0;
+    reg [3:0] test_step = 0;
+    reg selected_digit = 0;
+    reg enable_meta = 0;
+    reg enable_sync = 0;
+    reg enable_stable = 0;
+    reg enable_last = 0;
+    reg [3:0] selected_bcd;
+    reg [7:0] raw_seg;
+    reg [1:0] raw_digit_en;
+    wire [6:0] seg7;
+    wire enable_pressed = enable_stable && !enable_last;
+
+    always @(posedge clk) begin
+        enable_meta <= enable;
+        enable_sync <= enable_meta;
+
+        if (reset) begin
+            debounce_div <= 0;
+            enable_stable <= 0;
+            enable_last <= 0;
+            ones <= 0;
+            tens <= 0;
+        end else begin
+            if (enable_sync == enable_stable) begin
+                debounce_div <= 0;
+            end else if (debounce_div == BUTTON_DEBOUNCE_MAX - 1) begin
+                debounce_div <= 0;
+                enable_stable <= enable_sync;
+            end else begin
+                debounce_div <= debounce_div + 1'b1;
+            end
+
+            enable_last <= enable_stable;
+
+            if (enable_pressed && !test_mode) begin
+                if (ones == 4'd9) begin
+                    ones <= 0;
+                    tens <= (tens == 4'd9) ? 0 : tens + 1'b1;
+                end else begin
+                    ones <= ones + 1'b1;
+                end
+            end
+        end
+    end
+
+    always @(posedge clk) begin
+        if (reset) begin
+            refresh_div <= 0;
+            selected_digit <= 0;
+        end else if (refresh_div == REFRESH_MAX - 1) begin
+            refresh_div <= 0;
+            selected_digit <= ~selected_digit;
+        end else begin
+            refresh_div <= refresh_div + 1'b1;
+        end
+    end
+
+    always @(posedge clk) begin
+        if (reset) begin
+            test_div <= 0;
+            test_step <= 0;
+        end else if (test_mode) begin
+            if (test_div == TEST_MAX - 1) begin
+                test_div <= 0;
+                test_step <= (test_step == 4'd8) ? 0 : test_step + 1'b1;
+            end else begin
+                test_div <= test_div + 1'b1;
+            end
+        end else begin
+            test_div <= 0;
+            test_step <= 0;
+        end
+    end
+
+    always @* begin
+        selected_bcd = selected_digit ? tens : ones;
+        raw_seg = {seg7, 1'b0};
+        raw_digit_en = selected_digit ? 2'b01 : 2'b10;
+
+        if (test_mode) begin
+            raw_seg = (test_step == 4'd0) ? 8'hFF : 8'b10000000 >> (test_step - 1'b1);
+            raw_digit_en = 2'b11;
+        end
+    end
+
+    seven_segment_decoder #(.ACTIVE_LOW(0)) decoder (
+        .hex(selected_bcd),
+        .seg(seg7)
+    );
+
+    assign seg = ACTIVE_LOW_SEG ? ~raw_seg : raw_seg;
+    assign digit_en = ACTIVE_LOW_DIGIT ? ~raw_digit_en : raw_digit_en;
+endmodule
+
 module sixteen_segment_decoder #(
     parameter ACTIVE_LOW = 1
 ) (

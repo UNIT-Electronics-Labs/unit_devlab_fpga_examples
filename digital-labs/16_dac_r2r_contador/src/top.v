@@ -2,20 +2,21 @@ module top (
     input  wire       clk,
     input  wire       key_reset_n,
     input  wire       key_enable_n,
+    output wire [7:0] dac,
     output wire [7:0] seg,
     output wire [1:0] digit_en
 );
-    two_digit_7seg_counter #(
+    dac_mode_controller #(
         .CLK_HZ(27000000),
-        .COUNT_HZ(1),
+        .WAVE_HZ(1000),
         .REFRESH_HZ(1000),
         .ACTIVE_LOW_SEG(1),
         .ACTIVE_LOW_DIGIT(1)
-    ) display (
+    ) controller (
         .clk(clk),
-        .reset(~key_reset_n),
-        .enable(~key_enable_n),
-        .test_mode(1'b0),
+        .reset_n(key_reset_n),
+        .mode_next_n(key_enable_n),
+        .dac(dac),
         .seg(seg),
         .digit_en(digit_en)
     );
