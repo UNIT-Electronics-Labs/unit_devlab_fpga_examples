@@ -66,4 +66,8 @@ devlab build -c devlab-vhdl.toml
 devlab flash
 ```
 
-El flujo por defecto usa Verilog porque suele ser más portable en entornos donde el plugin GHDL de Yosys no está disponible. VHDL se conserva como alternativa didáctica y se compila de forma explícita.
+El flujo por defecto usa Verilog y VHDL se selecciona de forma explícita. En
+Windows, DevLab instala GHDL por separado y convierte primero el diseño VHDL a
+Verilog; no necesita el plugin `yosys-ghdl`. Consulta la guía de
+[soporte VHDL/GHDL en Windows](./windows.md#soporte-vhdl-ghdl-en-windows) para
+instalarlo y verificar el comando de síntesis.

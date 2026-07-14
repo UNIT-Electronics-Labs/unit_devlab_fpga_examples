@@ -45,10 +45,10 @@ Sin el driver WinUSB/libusbK, openFPGALoader no podrá comunicarse con la FPGA. 
 # Actualizar pip
 python -m pip install --upgrade pip
 
-# Instalar DevLab
-python -m pip install --upgrade devlab-fpga
+# Instalar la versión con soporte VHDL/GHDL para Windows
+python -m pip install --upgrade git+https://github.com/UNIT-Electronics-Labs/unit_devlab_lib.git
 
-# Instalar toolchains
+# Instalar OSS CAD Suite y GHDL
 python -m devlab install --force
 python -m devlab install-ghdl
 
@@ -57,9 +57,90 @@ python -m devlab --version
 python -m devlab doctor
 ```
 
+Mientras la versión nueva no esté publicada en PyPI, instala DevLab desde
+GitHub como se muestra arriba. La versión esperada con el hotfix de Windows es:
+
+```text
+devlab 0.1.11
+```
+
+Si el comando `devlab` está disponible en `PATH`, puedes omitir `python -m` en
+todos los ejemplos de esta página.
+
+## Soporte VHDL/GHDL en Windows
+
+OSS CAD Suite para Windows no incluye GHDL. Por eso DevLab lo instala como un
+paquete independiente y lo utiliza únicamente para convertir las fuentes VHDL
+a Verilog antes de ejecutar Yosys.
+
+### Instalar GHDL
+
+```powershell
+python -m devlab install-ghdl
+```
+
+El comando instala `ghdl-mcode-6.0.0-ucrt64.zip` en una ruta equivalente a:
+
+```text
+C:\Users\<usuario>\.devlab\toolchains\ghdl-6.0.0-windows-x64
+```
+
+### Verificar el flujo sin compilar
+
+Puedes crear un proyecto mínimo y revisar los comandos que ejecutaría DevLab:
+
+```powershell
+python -m devlab new blink-vhdl --hdl vhdl
+cd blink-vhdl
+python -m devlab build --dry-run
+```
+
+La salida debe comenzar con una etapa GHDL similar a:
+
+```powershell
+ghdl --synth --std=08 --out=verilog src/top.vhd -e top > build/top_ghdl.v
+```
+
+Después, Yosys debe recibir el Verilog generado:
+
+```powershell
+yosys -p "synth_gowin -top top -json build/top.json" build/top_ghdl.v
+```
+
+El flujo completo es:
+
+```text
+Fuentes VHDL
+  -> ghdl --synth --out=verilog
+  -> build/<top>_ghdl.v
+  -> yosys
+  -> nextpnr-himbaechel
+  -> gowin_pack
+```
+
+No se usa `yosys-ghdl` en Windows. El paquete GHDL incluye `ghdl.exe` y sus
+bibliotecas, pero no un plugin `ghdl_yosys.dll`.
+
+### Verificar el paquete de OSS CAD Suite
+
+DevLab verifica automáticamente el SHA-256 del archivo descargado. Para el
+release `2026-07-06` también puedes comprobarlo manualmente:
+
+```powershell
+Get-FileHash "$env:USERPROFILE\.devlab\cache\oss-cad-suite-windows-x64-20260706.exe" -Algorithm SHA256
+```
+
+El valor esperado es:
+
+```text
+E8AB814D490D89163E418DC634842CF086EA305DDE0C32F832528194A5B93AC9
+```
+
 ## Configuración de Windows Defender (Importante)
 
-**Sin estas exclusiones, la compilación será muy lenta o fallará.**
+Los ejecutables de OSS CAD Suite y GHDL pueden ser inspeccionados o bloqueados
+por Defender. Empieza con exclusiones por proceso y agrega la exclusión de
+carpeta solamente si el problema continúa.
 
 ### Ejecutar PowerShell como Administrador
 
@@ -84,8 +165,6 @@ Add-MpPreference -ExclusionProcess "$oss\gowin_pack.exe"
 Add-MpPreference -ExclusionProcess "$oss\openFPGALoader.exe"
 Add-MpPreference -ExclusionProcess "$ghdl\ghdl.exe"
 
-# Agrega exclusión de la carpeta completa (recomendado)
-Add-MpPreference -ExclusionPath "$env:USERPROFILE\.devlab"
 ```
 
 ![Comandos de PowerShell](./img/ps_commands.webp)
@@ -97,6 +176,15 @@ Add-MpPreference -ExclusionPath "$env:USERPROFILE\.devlab"
 Get-MpPreference | Select-Object -ExpandProperty ExclusionPath
 Get-MpPreference | Select-Object -ExpandProperty ExclusionProcess
 ```
+
+Si Defender continúa bloqueando DLL o archivos temporales, agrega una exclusión
+limitada al directorio de herramientas:
+
+```powershell
+Add-MpPreference -ExclusionPath "$env:USERPROFILE\.devlab"
+```
+
+Evita desactivar la protección global de Windows.
 
 ## Uso Diario
 
@@ -149,6 +237,48 @@ python -m devlab --help
 1. Configura las exclusiones de Windows Defender (ver arriba)
 2. Reinicia PowerShell
 3. Intenta compilar nuevamente
+
+### Windows App Control bloquea OSS CAD Suite
+
+Si `devlab install` falla con `WinError 4551` e indica que una directiva de
+Control de aplicaciones bloqueó el archivo, Windows impidió ejecutar el `.exe`
+autoextraíble. Instala 7-Zip y fuerza la instalación:
+
+```powershell
+winget install 7zip.7zip
+python -m devlab install --force
+```
+
+DevLab 0.1.11 o posterior utiliza `7z.exe` como primera opción cuando está
+disponible, por lo que puede extraer el paquete sin ejecutar el autoextraíble.
+Si no utilizas `winget`, instala 7-Zip desde
+[7-zip.org](https://www.7-zip.org/) y comprueba que esté en `PATH` o en
+`C:\Program Files\7-Zip`.
+
+### Falta GHDL
+
+```powershell
+python -m devlab install-ghdl
+python -m devlab doctor
+```
+
+### `nextpnr-himbaechel.exe` falla con `3221225785`
+
+Este código suele indicar que se cargó una DLL incompatible. Actualiza DevLab y
+comprueba la versión:
+
+```powershell
+python -m pip install --upgrade git+https://github.com/UNIT-Electronics-Labs/unit_devlab_lib.git
+python -m devlab --version
+```
+
+Desde DevLab 0.1.9, las DLL de GHDL solamente se agregan al entorno del proceso
+`ghdl`; `nextpnr-himbaechel.exe` se ejecuta con el entorno de OSS CAD Suite.
+
+### Error de pines sin restricciones
+
+Si el build llega a `nextpnr` y termina con `ERROR: Unconstrained IO`, el flujo
+GHDL/Yosys ya funcionó. Actualiza `pins.cst` con los pines reales de tu tarjeta.
 
 ### Error: "7z is not recognized"
 
