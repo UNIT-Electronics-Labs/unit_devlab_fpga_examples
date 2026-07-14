@@ -23,6 +23,21 @@ El contador incrementa en cada flanco de subida de `clk`. Un bit alto del contad
 
 ![Blink](img/blink.png)
 
+## Pinout
+
+| Señal | Función | Pin FPGA | IO_TYPE |
+| --- | --- | --- | --- |
+| `clk` | Reloj de sistema | 52 | `LVCMOS33` |
+| `led` | LED de salida | 16 | `LVCMOS33` |
+
+```text [pins.cst]
+IO_LOC "clk" 52;
+IO_PORT "clk" IO_TYPE=LVCMOS33;
+
+IO_LOC "led" 16;
+IO_PORT "led" IO_TYPE=LVCMOS33;
+```
+
 ## Código Fuente
 
 ::: code-group

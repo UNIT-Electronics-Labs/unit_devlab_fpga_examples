@@ -13,6 +13,15 @@ Combinar salida analogica y visualizacion:
 - `key_enable_n`: avanza al siguiente modo.
 - `key_reset_n`: regresa al modo `01`.
 
+## Archivos
+
+- `digital-labs/16_dac_r2r_contador/devlab.toml`: build Verilog.
+- `digital-labs/16_dac_r2r_contador/devlab-vhdl.toml`: build VHDL.
+- `digital-labs/16_dac_r2r_contador/pins.cst`: pines de reloj, botones, display y DAC.
+- `digital-labs/16_dac_r2r_contador/src/top.v`: top-level Verilog.
+- `digital-labs/16_dac_r2r_contador/src/digital_labs.v`: controlador de modos, DAC y display.
+- `digital-labs/16_dac_r2r_contador/src/top.vhd`: versión VHDL autocontenida.
+
 ## Demostracion en Placa
 
 ```bash
@@ -36,6 +45,9 @@ El display conserva el pinout de la practica 04. El DAC conserva el orden MSB a 
 
 | Senal | Funcion | Pin FPGA | IO_TYPE |
 | --- | --- | --- | --- |
+| `clk` | Reloj de sistema | 52 | `LVCMOS33`, pull-up |
+| `key_reset_n` | Reset activo en bajo | 3 | `LVCMOS18`, pull-up |
+| `key_enable_n` | Cambio de modo activo en bajo | 4 | `LVCMOS18`, pull-up |
 | `dac[7]` | MSB | 51 | `LVCMOS33` |
 | `dac[6]` | bit 6 | 42 | `LVCMOS33` |
 | `dac[5]` | bit 5 | 41 | `LVCMOS33` |
@@ -567,6 +579,18 @@ end architecture;
 ## Teoria Minima
 
 La practica usa un contador de modo debounced por boton. Ese modo alimenta dos bloques al mismo tiempo: el generador DAC y el multiplexado del display. Asi el numero mostrado y la forma generada cambian juntos.
+
+La salida del DAC mantiene el orden MSB a LSB de la práctica 15, excepto `dac[2]`, que se mueve a `GPIO30` porque `GPIO39` queda reservado para el segmento `g` del display.
+
+## Prueba Esperada
+
+| Display | Forma de onda | Acción |
+| --- | --- | --- |
+| `01` | Rampa triangular | Estado inicial o reset |
+| `02` | Diente de sierra | Una pulsación de `key_enable_n` |
+| `03` | Cuadrada | Dos pulsaciones de `key_enable_n` |
+| `04` | Sinusoidal | Tres pulsaciones de `key_enable_n` |
+| `01` | Rampa triangular | Cuatro pulsaciones o `key_reset_n` |
 
 ## Actividades
 

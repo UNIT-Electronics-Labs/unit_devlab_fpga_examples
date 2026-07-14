@@ -8,11 +8,38 @@ Ejemplo de inversor lógico.
 - Aplicar negación lógica.
 - Enviar el resultado al LED activo en bajo.
 
+## Archivos
+
+- `not/devlab.toml`: build Verilog.
+- `not/devlab-vhdl.toml`: build VHDL.
+- `not/src/top.v`: implementación Verilog.
+- `not/src/top.vhd`: implementación VHDL.
+- `not/pins.cst`: pines de la placa.
+
 ## Lógica
 
 La salida cambia al valor contrario de la entrada lógica. Como el LED es activo en bajo, el `top` también considera la polaridad física del LED.
 
 ![top entity](img/top_entity.png)
+
+## Pinout
+
+| Señal | Función | Pin FPGA | IO_TYPE |
+| --- | --- | --- | --- |
+| `gpio3_n` | Entrada activa en bajo | 3 | `LVCMOS18`, pull-up |
+| `gpio4_n` | Entrada disponible | 4 | `LVCMOS18`, pull-up |
+| `led_n` | LED activo en bajo | 16 | `LVCMOS33` |
+
+```text [pins.cst]
+IO_LOC "gpio3_n" 3;
+IO_PORT "gpio3_n" IO_TYPE=LVCMOS18 PULL_MODE=UP;
+
+IO_LOC "gpio4_n" 4;
+IO_PORT "gpio4_n" IO_TYPE=LVCMOS18 PULL_MODE=UP;
+
+IO_LOC "led_n" 16;
+IO_PORT "led_n" IO_TYPE=LVCMOS33;
+```
 
 ## Código Fuente
 

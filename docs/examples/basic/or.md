@@ -8,11 +8,38 @@ Ejemplo de compuerta OR con dos entradas y un LED.
 - Separar señales físicas activas en bajo de señales lógicas internas.
 - Usar el mismo ejemplo en Verilog y VHDL.
 
+## Archivos
+
+- `or/devlab.toml`: build Verilog.
+- `or/devlab-vhdl.toml`: build VHDL.
+- `or/src/top.v`: implementación Verilog.
+- `or/src/top.vhd`: implementación VHDL.
+- `or/pins.cst`: pines de la placa.
+
 ## Lógica
 
 El LED se activa cuando al menos una de las dos entradas lógicas vale `1`.
 
 ![top entity](img/top_entity.png)
+
+## Pinout
+
+| Señal | Función | Pin FPGA | IO_TYPE |
+| --- | --- | --- | --- |
+| `gpio3_n` | Entrada activa en bajo | 3 | `LVCMOS18`, pull-up |
+| `gpio4_n` | Entrada activa en bajo | 4 | `LVCMOS18`, pull-up |
+| `led_n` | LED activo en bajo | 16 | `LVCMOS33` |
+
+```text [pins.cst]
+IO_LOC "gpio3_n" 3;
+IO_PORT "gpio3_n" IO_TYPE=LVCMOS18 PULL_MODE=UP;
+
+IO_LOC "gpio4_n" 4;
+IO_PORT "gpio4_n" IO_TYPE=LVCMOS18 PULL_MODE=UP;
+
+IO_LOC "led_n" 16;
+IO_PORT "led_n" IO_TYPE=LVCMOS33;
+```
 
 ## Código Fuente
 

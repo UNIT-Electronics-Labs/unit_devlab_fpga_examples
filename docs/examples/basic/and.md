@@ -23,6 +23,25 @@ Las entradas físicas se invierten dentro del HDL para que el valor lógico sea 
 
 ![top entity](img/top_entity.png)
 
+## Pinout
+
+| Señal | Función | Pin FPGA | IO_TYPE |
+| --- | --- | --- | --- |
+| `gpio3_n` | Entrada activa en bajo | 3 | `LVCMOS18`, pull-up |
+| `gpio4_n` | Entrada activa en bajo | 4 | `LVCMOS18`, pull-up |
+| `led_n` | LED activo en bajo | 10 | `LVCMOS33` |
+
+```text [pins.cst]
+IO_LOC "gpio3_n" 3;
+IO_PORT "gpio3_n" IO_TYPE=LVCMOS18 PULL_MODE=UP;
+
+IO_LOC "gpio4_n" 4;
+IO_PORT "gpio4_n" IO_TYPE=LVCMOS18 PULL_MODE=UP;
+
+IO_LOC "led_n" 10;
+IO_PORT "led_n" IO_TYPE=LVCMOS33;
+```
+
 ## Código Fuente
 
 ::: code-group
