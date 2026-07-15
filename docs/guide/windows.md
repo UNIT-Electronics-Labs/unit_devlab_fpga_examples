@@ -17,6 +17,9 @@ python --version
 py --list
 ```
 
+Si la instalación de 7-Zip falla o Windows App Control la bloquea, consulta
+[Usar NanaZip como alternativa](#usar-nanazip-como-alternativa).
+
 ::: tip Descarga Zadig
 Descarga Zadig desde [https://zadig.akeo.ie/](https://zadig.akeo.ie/) antes de continuar.
 :::
@@ -311,6 +314,41 @@ winget install 7zip.7zip
 ```
 
 Reinicia PowerShell después de la instalación.
+
+### Usar NanaZip como alternativa
+
+Si `winget install 7zip.7zip` falla o la política del equipo impide instalar
+7-Zip, instala NanaZip desde Microsoft Store:
+
+```powershell
+winget install --id 9N8G7TSCL18R --exact --source msstore
+```
+
+Acepta los contratos de Microsoft Store cuando WinGet los muestre y abre una
+nueva ventana de PowerShell. NanaZip proporciona un alias de ejecución para
+facilitar la compatibilidad con 7-Zip. Comprueba que Windows lo exponga como
+`7z.exe` antes de volver a ejecutar DevLab:
+
+```powershell
+Get-Command 7z.exe
+7z.exe i
+```
+
+Si PowerShell no encuentra el comando, revisa **Configuración > Aplicaciones >
+Configuración avanzada de aplicaciones > Alias de ejecución de aplicaciones**
+y habilita el alias de NanaZip para 7-Zip. Después abre otra ventana de
+PowerShell y repite la comprobación.
+
+Finalmente, fuerza nuevamente la instalación del toolchain con la misma
+versión de Python donde instalaste DevLab. Por ejemplo, para Python 3.14:
+
+```powershell
+py -3.14 -m devlab install --force
+py -3.14 -m devlab doctor
+py -3.14 -m devlab build
+```
+
+Sustituye `3.14` por la versión correcta que muestre `py --list`.
 
 ### Error: "Could not find JTAG device" al Cargar
 
