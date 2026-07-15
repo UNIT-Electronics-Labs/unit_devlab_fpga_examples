@@ -12,6 +12,9 @@ winget install 7zip.7zip
 
 # Verificar que Python 3.11+ esté instalado
 python --version
+
+# Mostrar las versiones registradas en el lanzador de Python
+py --list
 ```
 
 ::: tip Descarga Zadig
@@ -66,6 +69,22 @@ devlab 0.1.11
 
 Si el comando `devlab` está disponible en `PATH`, puedes omitir `python -m` en
 todos los ejemplos de esta página.
+
+::: tip Usar la misma versión de Python
+Si `python -m devlab --version` falla, pero DevLab se instaló con otra versión
+de Python, selecciónala mediante el lanzador `py`. Por ejemplo, para Python
+3.14:
+
+```powershell
+py -3.14 -m devlab --version
+py -3.14 -m devlab doctor
+py -3.14 -m devlab build
+```
+
+Consulta las versiones disponibles con `py --list` y sustituye `3.14` por la
+versión donde instalaste DevLab. Usa esa misma selección en `pip`, `install`,
+`build` y `flash` para evitar mezclar instalaciones.
+:::
 
 ## Soporte VHDL/GHDL en Windows
 
@@ -315,6 +334,35 @@ Reinicia PowerShell después de la instalación.
 1. Descarga Python desde [python.org](https://www.python.org/downloads/)
 2. Durante la instalación, marca "Add Python to PATH"
 3. Reinicia PowerShell
+
+### DevLab está instalado, pero la versión o el módulo fallan
+
+**Síntoma**: `python -m devlab --version` o `python -m devlab build` falla,
+aunque DevLab ya se instaló con otra versión de Python.
+
+**Causa**: El comando `python` apunta a una instalación diferente de la que
+contiene el paquete `devlab`.
+
+**Solución**:
+
+```powershell
+# Identificar las versiones instaladas
+py --list
+
+# Comprobar y usar la instalación correcta; este ejemplo usa Python 3.14
+py -3.14 -m devlab --version
+py -3.14 -m devlab build
+```
+
+Si esa versión todavía responde `No module named devlab`, instala el paquete
+con el mismo intérprete y vuelve a compilar:
+
+```powershell
+py -3.14 -m pip install --upgrade git+https://github.com/UNIT-Electronics-Labs/unit_devlab_lib.git
+py -3.14 -m devlab build
+```
+
+Sustituye `3.14` por la versión correcta que muestre `py --list`.
 
 ### La Compilación es Muy Lenta
 

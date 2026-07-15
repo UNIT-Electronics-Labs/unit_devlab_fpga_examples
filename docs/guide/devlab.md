@@ -35,6 +35,19 @@ python -m devlab --version
 python -m devlab doctor
 ```
 
+Si `python` selecciona una instalación distinta de aquella donde está DevLab,
+usa el lanzador de Windows para elegir la versión correcta. Por ejemplo:
+
+```powershell
+py --list
+py -3.14 -m devlab --version
+py -3.14 -m devlab doctor
+py -3.14 -m devlab build
+```
+
+El valor `3.14` es un ejemplo: sustitúyelo por la versión que contiene DevLab
+y utiliza la misma selección para los demás comandos.
+
 `doctor` comprueba las herramientas de OSS CAD Suite. GHDL solamente es
 necesario para compilar configuraciones VHDL.
 
@@ -141,7 +154,9 @@ digitales lo usan para separar módulos reutilizables del `top`.
 
 ## Problemas frecuentes
 
-- Si `devlab` no está en `PATH`, usa `python -m devlab`.
+- Si `devlab` no está en `PATH`, usa `python -m devlab`. En Windows, si ese
+  comando elige otra instalación, usa `py -<versión> -m devlab`; por ejemplo,
+  `py -3.14 -m devlab build`.
 - Si falla la asignación de pines con `ERROR: Unconstrained IO`, revisa
   [`pins.cst`](./cst.md); GHDL y Yosys ya terminaron su etapa.
 - Si Windows bloquea la instalación o algún ejecutable de síntesis, consulta

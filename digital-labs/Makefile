@@ -14,7 +14,8 @@ PRACTICAS := \
 	13_maquina_moore \
 	14_maquina_mealy \
 	15_dac_r2r_8_bits \
-	16_dac_r2r_contador
+	16_dac_r2r_contador \
+	17_dac_r2r_frecuencia
 
 .PHONY: all clean $(PRACTICAS)
 

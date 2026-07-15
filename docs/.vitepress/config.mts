@@ -56,7 +56,10 @@ export default defineConfig({
           { text: '11 Contador up/down', link: '/examples/digital-labs/11_contador_ascendente_descendente' },
           { text: '12 Arranque paro reset', link: '/examples/digital-labs/12_contador_arranque_paro_reset' },
           { text: '13 Máquina Moore', link: '/examples/digital-labs/13_maquina_moore' },
-          { text: '14 Máquina Mealy', link: '/examples/digital-labs/14_maquina_mealy' }
+          { text: '14 Máquina Mealy', link: '/examples/digital-labs/14_maquina_mealy' },
+          { text: '15 DAC R-2R', link: '/examples/digital-labs/15_dac_r2r_8_bits' },
+          { text: '16 DAC y modos', link: '/examples/digital-labs/16_dac_r2r_contador' },
+          { text: '17 DAC y frecuencia', link: '/examples/digital-labs/17_dac_r2r_frecuencia' }
         ]
       }
     ],

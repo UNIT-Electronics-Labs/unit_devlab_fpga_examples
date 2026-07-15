@@ -53,6 +53,7 @@ Usa esta referencia para revisar la ubicación física de `clk`, botones, LEDs y
 
 - [15 DAC R-2R de 8 bits](./15_dac_r2r_8_bits.md)
 - [16 DAC R-2R con contador de modo](./16_dac_r2r_contador.md)
+- [17 Seno DAC con frecuencia seleccionable](./17_dac_r2r_frecuencia.md)
 
 ## Comandos Base
 
